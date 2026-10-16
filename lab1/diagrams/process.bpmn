@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1sw9ww2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="18.31.0">
+  <bpmn:process id="Process_1skbtvw" isExecutable="false">
+    <bpmn:startEvent id="StartEvent_1t4r4s7" name="Task">
+      <bpmn:outgoing>Flow_0e95pd7</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:exclusiveGateway id="Gateway_00xylde">
+      <bpmn:incoming>Flow_0e95pd7</bpmn:incoming>
+      <bpmn:outgoing>Flow_161su06</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0e95pd7" sourceRef="StartEvent_1t4r4s7" targetRef="Gateway_00xylde" />
+    <bpmn:intermediateThrowEvent id="Event_1uetf7i">
+      <bpmn:incoming>Flow_161su06</bpmn:incoming>
+    </bpmn:intermediateThrowEvent>
+    <bpmn:sequenceFlow id="Flow_161su06" sourceRef="Gateway_00xylde" targetRef="Event_1uetf7i" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_1skbtvw">
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1t4r4s7">
+        <dc:Bounds x="122" y="92" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="129" y="135" width="23" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_00xylde_di" bpmnElement="Gateway_00xylde" isMarkerVisible="true">
+        <dc:Bounds x="215" y="85" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1uetf7i_di" bpmnElement="Event_1uetf7i">
+        <dc:Bounds x="322" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0e95pd7_di" bpmnElement="Flow_0e95pd7">
+        <di:waypoint x="158" y="110" />
+        <di:waypoint x="215" y="110" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_161su06_di" bpmnElement="Flow_161su06">
+        <di:waypoint x="265" y="110" />
+        <di:waypoint x="322" y="110" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
