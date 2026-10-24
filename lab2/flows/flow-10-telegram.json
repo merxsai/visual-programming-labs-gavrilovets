@@ -1,0 +1,51 @@
+[
+    {
+        "id": "ec90715e22eba65d",
+        "type": "telegram sender",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "bot": "6b71db19975421c2",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 1620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6b71db19975421c2",
+        "type": "telegram bot",
+        "botname": "tvl_lab2_gavrilovets_bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "270e8d91e130aad5",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-telegrambot": "19.0.3"
+        }
+    }
+]

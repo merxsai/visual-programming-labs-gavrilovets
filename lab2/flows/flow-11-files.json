@@ -1,0 +1,1007 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f51191b2d6d228c2",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lab2/gavrilovets/basic",
+        "payload": "Гавриловец",
+        "payloadType": "str",
+        "x": 500,
+        "y": 240,
+        "wires": [
+            [
+                "42938e9c24036692"
+            ]
+        ]
+    },
+    {
+        "id": "42938e9c24036692",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "33965d917d4688a7",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 1",
+        "func": "// Случайное число от 1 до 100\nconst num = Math.floor(Math.random() * 100) + 1;\n\nmsg.payload = num;\nmsg.student = \"Гавриловец\";\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 380,
+        "wires": [
+            [
+                "7da4b98cb234d62d"
+            ]
+        ]
+    },
+    {
+        "id": "7da4b98cb234d62d",
+        "type": "switch",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lte",
+                "v": "50",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "50",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 470,
+        "y": 460,
+        "wires": [
+            [
+                "e14afafe65f19f5e",
+                "1150a5a13941367c"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "988d92cb17e63580",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "33965d917d4688a7"
+            ]
+        ]
+    },
+    {
+        "id": "e14afafe65f19f5e",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "1150a5a13941367c",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "a54dd8deb7653fa6",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 580,
+        "wires": [
+            [
+                "29e33ba80ffe95e2"
+            ]
+        ]
+    },
+    {
+        "id": "29e33ba80ffe95e2",
+        "type": "change",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "lab2/gavrilovets/change",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "timestamp",
+                "pt": "msg",
+                "to": "",
+                "tot": "date"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "Успешно изменено нодой Change",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 460,
+        "y": 580,
+        "wires": [
+            [
+                "30939345ad46f9d2"
+            ]
+        ]
+    },
+    {
+        "id": "30939345ad46f9d2",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "0aa94e67a21eb4a3",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{   \"name\": \"Илья\",   \"surname\": \"Гавриловец\",   \"course\": \"Визуальное программирование\" }",
+        "payloadType": "json",
+        "x": 230,
+        "y": 700,
+        "wires": [
+            [
+                "e186131b184d7585"
+            ]
+        ]
+    },
+    {
+        "id": "e186131b184d7585",
+        "type": "template",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Студент: {{payload.surname}} {{payload.name}}\nКурс: {{payload.course}}\nСтатус: Шаблон Mustache успешно сформирован!",
+        "output": "str",
+        "x": 420,
+        "y": 720,
+        "wires": [
+            [
+                "dbc222af7c8575d3"
+            ]
+        ]
+    },
+    {
+        "id": "dbc222af7c8575d3",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "ababeb9c05a98a7f",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 880,
+        "wires": [
+            [
+                "1ceff9de9c956cae"
+            ]
+        ]
+    },
+    {
+        "id": "1ceff9de9c956cae",
+        "type": "http request",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.chucknorris.io/jokes/random",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 450,
+        "y": 880,
+        "wires": [
+            [
+                "9de37ac14b47c40e"
+            ]
+        ]
+    },
+    {
+        "id": "9de37ac14b47c40e",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "4954b7bac07bc17c",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Привет из брокера от Гавриловца!",
+        "payloadType": "str",
+        "x": 250,
+        "y": 1060,
+        "wires": [
+            [
+                "ca4ddef7a2fcb596"
+            ]
+        ]
+    },
+    {
+        "id": "5908c394fca18daf",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "1885b5e35e366cfc",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "student/gavrilovets/lab2/test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "8507741aa70a98a2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 1000,
+        "wires": [
+            [
+                "5908c394fca18daf"
+            ]
+        ]
+    },
+    {
+        "id": "ca4ddef7a2fcb596",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "student/gavrilovets/lab2/test",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8507741aa70a98a2",
+        "x": 600,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "dfe62925028ad8cb",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/api/text",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 1200,
+        "wires": [
+            [
+                "22245a686b1ab597"
+            ]
+        ]
+    },
+    {
+        "id": "22245a686b1ab597",
+        "type": "template",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Сервер Node-RED работает.",
+        "output": "str",
+        "x": 400,
+        "y": 1200,
+        "wires": [
+            [
+                "e50b587af4a038a2"
+            ]
+        ]
+    },
+    {
+        "id": "e50b587af4a038a2",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "cf2d01973750a49f",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/api/info",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 1260,
+        "wires": [
+            [
+                "356bdf2bb929b335"
+            ]
+        ]
+    },
+    {
+        "id": "e2626d4c706231b6",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "356bdf2bb929b335",
+        "type": "template",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n  \"service\": \"IoT Gateway\",\n  \"developer\": \"Гавриловец Илья\",\n  \"version\": \"2.1.0\",\n  \"status\": \"online\"\n}",
+        "output": "json",
+        "x": 400,
+        "y": 1260,
+        "wires": [
+            [
+                "e2626d4c706231b6"
+            ]
+        ]
+    },
+    {
+        "id": "8a2759f95ea6c504",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 2",
+        "func": "const id = msg.req.query.id;\n\nif (!id) {\n    msg.statusCode = 400;\n    msg.payload = { \n        status: 400, \n        error: \"Не передан обязательный параметр запроса: ?id=\" \n    };\n} else if (id === \"1\") {\n    msg.statusCode = 200;\n    msg.payload = { \n        id: 1, \n        name: \"Контроллер сбора данных ESP32\", \n        owner: \"Гавриловец\",\n        available: true \n    };\n} else {\n    msg.statusCode = 404;\n    msg.payload = { \n        status: 404, \n        error: `Элемент с id=${id} не найден в реестре` \n    };\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1300,
+        "wires": [
+            [
+                "7932868cb56e0dce"
+            ]
+        ]
+    },
+    {
+        "id": "a1b1ee45847bd7f0",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/api/items",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 1300,
+        "wires": [
+            [
+                "8a2759f95ea6c504"
+            ]
+        ]
+    },
+    {
+        "id": "7932868cb56e0dce",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "af90f847221bca9a",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 250,
+        "y": 1440,
+        "wires": [
+            [
+                "1d75fec32ace1a44"
+            ]
+        ]
+    },
+    {
+        "id": "1d75fec32ace1a44",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 3",
+        "func": "// Имитация температуры\nconst temp = Math.floor(Math.random() * 13) + 18;\nmsg.payload = temp;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1440,
+        "wires": [
+            [
+                "3b0342c8cf312c39",
+                "4bfe50b5e3a9a04e"
+            ]
+        ]
+    },
+    {
+        "id": "3b0342c8cf312c39",
+        "type": "ui_gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "f8d06be84667b753",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": " Температура",
+        "label": "units",
+        "format": "°C",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "diff": false,
+        "className": "",
+        "x": 580,
+        "y": 1380,
+        "wires": []
+    },
+    {
+        "id": "4bfe50b5e3a9a04e",
+        "type": "ui_chart",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "group": "f8d06be84667b753",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "График температуры",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 600,
+        "y": 1480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9722e9efdab6b535",
+        "type": "telegram receiver",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "bot": "6b71db19975421c2",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "hasinput": false,
+        "inputs": 0,
+        "handleallupdates": false,
+        "handleprocessupdates": false,
+        "x": 190,
+        "y": 1600,
+        "wires": [
+            [
+                "9583a2f38b28eb20"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "9583a2f38b28eb20",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 4",
+        "func": "const text = msg.payload.content || \"\";\nconst chatId = msg.payload.chatId;\n\nlet replyText = \"\";\n\n// 1. Команда /start\nif (text === \"/start\") {\n    replyText = \"Привет! Я бот студента Гавриловца Ильи по лабораторной работе №2.\";\n}\n// 2. Команда на выбор студента (/info)\nelse if (text === \"/info\") {\n    replyText = \"Лабораторная работа по визуальному программированию. Node-RED + Telegram Bot в Docker.\";\n}\n// 3. Эхо на любое другое сообщение\nelse {\n    replyText = `Эхо : ${text}`;\n}\n\n// Формируем сообщение для отправки обратно\nmsg.payload = {\n    chatId: chatId,\n    type: \"message\",\n    content: replyText\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 1660,
+        "wires": [
+            [
+                "ec90715e22eba65d"
+            ]
+        ]
+    },
+    {
+        "id": "ec90715e22eba65d",
+        "type": "telegram sender",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "bot": "6b71db19975421c2",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 510,
+        "y": 1620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c3a8091856eadc50",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 1780,
+        "wires": [
+            [
+                "bdbcf14747ad78cc"
+            ]
+        ]
+    },
+    {
+        "id": "bdbcf14747ad78cc",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 5",
+        "func": "// Формируем JSON с данными\nconst data = {\n    student: \"Гавриловец Илья\",\n    subject: \"Визуальное программирование\",\n    lab: 2,\n    timestamp: new Date().toLocaleString()\n};\n\n// Превращаем в строку для записи\nmsg.payload = JSON.stringify(data, null, 2);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1780,
+        "wires": [
+            [
+                "5aef764e09851d50"
+            ]
+        ]
+    },
+    {
+        "id": "5aef764e09851d50",
+        "type": "file",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "filename": "/data/student.json",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 590,
+        "y": 1780,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c119dd93084ce70f",
+        "type": "file in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "filename": "/data/student.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 430,
+        "y": 1840,
+        "wires": [
+            [
+                "ac2b597da4163ecb"
+            ]
+        ]
+    },
+    {
+        "id": "fcbf8d2b1a512a36",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 220,
+        "y": 1840,
+        "wires": [
+            [
+                "c119dd93084ce70f"
+            ]
+        ]
+    },
+    {
+        "id": "ac2b597da4163ecb",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 1840,
+        "wires": []
+    },
+    {
+        "id": "8507741aa70a98a2",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "f8d06be84667b753",
+        "type": "ui_group",
+        "name": "Датчики",
+        "tab": "90eb1e53c6a0991b",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6b71db19975421c2",
+        "type": "telegram bot",
+        "botname": "tvl_lab2_gavrilovets_bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "90eb1e53c6a0991b",
+        "type": "ui_tab",
+        "name": "Мониторинг Гавриловец",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "52a55cdded852c04",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6",
+            "node-red-contrib-telegrambot": "19.0.3"
+        }
+    }
+]

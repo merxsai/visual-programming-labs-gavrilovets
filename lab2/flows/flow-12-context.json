@@ -1,0 +1,67 @@
+[
+    {
+        "id": "76a5337082ec0b48",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 280,
+        "y": 2000,
+        "wires": [
+            [
+                "fa3b437fdcd9e351"
+            ]
+        ]
+    },
+    {
+        "id": "fa3b437fdcd9e351",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 6",
+        "func": "// 1. Считываем значение счетчика из контекста потока (flow context)\n// Если счетчик еще не создан — берем 0\nlet count = flow.get(\"clickCounter\") || 0;\n\n// 2. Увеличиваем значение на 1 при каждом вызове\ncount += 1;\n\n// 3. Сохраняем обновленное число обратно в память контекста!\nflow.set(\"clickCounter\", count);\n\n// Формируем красивый ответ\nmsg.payload = {\n    developer: \"Гавриловец Илья\",\n    contextScope: \"flow context\",\n    currentCount: count,\n    message: `Кнопка нажата ${count} раз(а). Значение хранится в flow context!`\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 2000,
+        "wires": [
+            [
+                "32fa2e2a3139e83d"
+            ]
+        ]
+    },
+    {
+        "id": "32fa2e2a3139e83d",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 2000,
+        "wires": []
+    }
+]
