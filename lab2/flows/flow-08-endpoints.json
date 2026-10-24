@@ -1,0 +1,147 @@
+[
+    {
+        "id": "dfe62925028ad8cb",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/api/text",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 250,
+        "y": 1200,
+        "wires": [
+            [
+                "22245a686b1ab597"
+            ]
+        ]
+    },
+    {
+        "id": "22245a686b1ab597",
+        "type": "template",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Сервер Node-RED работает.",
+        "output": "str",
+        "x": 400,
+        "y": 1200,
+        "wires": [
+            [
+                "e50b587af4a038a2"
+            ]
+        ]
+    },
+    {
+        "id": "e50b587af4a038a2",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "cf2d01973750a49f",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/api/info",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 230,
+        "y": 1260,
+        "wires": [
+            [
+                "356bdf2bb929b335"
+            ]
+        ]
+    },
+    {
+        "id": "e2626d4c706231b6",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 550,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "356bdf2bb929b335",
+        "type": "template",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n  \"service\": \"IoT Gateway\",\n  \"developer\": \"Гавриловец Илья\",\n  \"version\": \"2.1.0\",\n  \"status\": \"online\"\n}",
+        "output": "json",
+        "x": 400,
+        "y": 1260,
+        "wires": [
+            [
+                "e2626d4c706231b6"
+            ]
+        ]
+    },
+    {
+        "id": "8a2759f95ea6c504",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 2",
+        "func": "const id = msg.req.query.id;\n\nif (!id) {\n    msg.statusCode = 400;\n    msg.payload = { \n        status: 400, \n        error: \"Не передан обязательный параметр запроса: ?id=\" \n    };\n} else if (id === \"1\") {\n    msg.statusCode = 200;\n    msg.payload = { \n        id: 1, \n        name: \"Контроллер сбора данных ESP32\", \n        owner: \"Гавриловец\",\n        available: true \n    };\n} else {\n    msg.statusCode = 404;\n    msg.payload = { \n        status: 404, \n        error: `Элемент с id=${id} не найден в реестре` \n    };\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 1300,
+        "wires": [
+            [
+                "7932868cb56e0dce"
+            ]
+        ]
+    },
+    {
+        "id": "a1b1ee45847bd7f0",
+        "type": "http in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "url": "/api/items",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 240,
+        "y": 1300,
+        "wires": [
+            [
+                "8a2759f95ea6c504"
+            ]
+        ]
+    },
+    {
+        "id": "7932868cb56e0dce",
+        "type": "http response",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 1300,
+        "wires": []
+    }
+]

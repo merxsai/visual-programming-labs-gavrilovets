@@ -1,0 +1,113 @@
+[
+    {
+        "id": "4954b7bac07bc17c",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Привет из брокера от Гавриловца!",
+        "payloadType": "str",
+        "x": 250,
+        "y": 1060,
+        "wires": [
+            [
+                "ca4ddef7a2fcb596"
+            ]
+        ]
+    },
+    {
+        "id": "5908c394fca18daf",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "1885b5e35e366cfc",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "student/gavrilovets/lab2/test",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "8507741aa70a98a2",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 1000,
+        "wires": [
+            [
+                "5908c394fca18daf"
+            ]
+        ]
+    },
+    {
+        "id": "ca4ddef7a2fcb596",
+        "type": "mqtt out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "student/gavrilovets/lab2/test",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "8507741aa70a98a2",
+        "x": 600,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "8507741aa70a98a2",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
