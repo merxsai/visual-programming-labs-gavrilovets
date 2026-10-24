@@ -1,0 +1,66 @@
+[
+    {
+        "id": "0aa94e67a21eb4a3",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{   \"name\": \"Илья\",   \"surname\": \"Гавриловец\",   \"course\": \"Визуальное программирование\" }",
+        "payloadType": "json",
+        "x": 230,
+        "y": 780,
+        "wires": [
+            [
+                "e186131b184d7585"
+            ]
+        ]
+    },
+    {
+        "id": "e186131b184d7585",
+        "type": "template",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Студент: {{payload.surname}} {{payload.name}}\nКурс: {{payload.course}}\nСтатус: Шаблон Mustache успешно сформирован!",
+        "output": "str",
+        "x": 420,
+        "y": 780,
+        "wires": [
+            [
+                "dbc222af7c8575d3"
+            ]
+        ]
+    },
+    {
+        "id": "dbc222af7c8575d3",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 780,
+        "wires": []
+    }
+]

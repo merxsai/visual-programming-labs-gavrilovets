@@ -1,0 +1,48 @@
+[
+    {
+        "id": "f51191b2d6d228c2",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "lab2/gavrilovets/basic",
+        "payload": "Гавриловец",
+        "payloadType": "str",
+        "x": 500,
+        "y": 240,
+        "wires": [
+            [
+                "42938e9c24036692"
+            ]
+        ]
+    },
+    {
+        "id": "42938e9c24036692",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 720,
+        "y": 240,
+        "wires": []
+    }
+]
