@@ -92,7 +92,6 @@
         },
         {
           "id": "cl96ntraa00083b6ij922v2qh",
-          "outgoingEdgeId": "cl96nv51s000a3b6i3wmlcmdt",
           "type": "text",
           "content": {
             "richText": [
@@ -106,6 +105,23 @@
               }
             ]
           }
+        },
+        {
+          "id": "1cf000705b2417e3ecb3d99b",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "В меню можно вернуться к списку тем после каждого ответа."
+                  }
+                ]
+              }
+            ]
+          },
+          "outgoingEdgeId": "cl96nv51s000a3b6i3wmlcmdt"
         }
       ]
     },
@@ -396,7 +412,8 @@
               "placeholder": "Например, как проверить ветку IF?",
               "button": "Отправить"
             },
-            "isLong": true
+            "isLong": true,
+            "variableId": "0c41e2534627e2db2d71019f"
           }
         }
       ]
@@ -409,6 +426,22 @@
         "y": 1049.08556420999
       },
       "blocks": [
+        {
+          "id": "02f005e9604d64367c9d7182",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Ваш вопрос: {{Вопрос}}"
+                  }
+                ]
+              }
+            ]
+          }
+        },
         {
           "id": "cl96oh3mn00203b6iahw2x1ns",
           "type": "text",
@@ -459,7 +492,7 @@
     {
       "id": "cl96nv51s000a3b6i3wmlcmdt",
       "from": {
-        "blockId": "cl96ntraa00083b6ij922v2qh"
+        "blockId": "1cf000705b2417e3ecb3d99b"
       },
       "to": {
         "groupId": "cl96ns9qr00043b6ii07bo25o"
@@ -535,7 +568,13 @@
       }
     }
   ],
-  "variables": [],
+  "variables": [
+    {
+      "id": "0c41e2534627e2db2d71019f",
+      "name": "Вопрос",
+      "isSessionVariable": true
+    }
+  ],
   "theme": {},
   "selectedThemeTemplateId": null,
   "settings": {
