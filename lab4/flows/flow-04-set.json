@@ -1,0 +1,103 @@
+{
+  "name": "04-set · Дополнение полей · Гавриловец · СДП-ИИ-241",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "17d2cee8-99cd-4dba-abda-bba08c4f4c45",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "93b4a781-4b27-44d5-aac8-c1adc54f2c5f",
+              "name": "topic",
+              "type": "string",
+              "value": "lab4/gavrilovets/ai-241/set"
+            },
+            {
+              "id": "430446e9-e2b0-43ec-aaa9-951a698323be",
+              "name": "timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "3962e5a6-32e7-417a-a412-b07310b8f3ed",
+              "name": "payload",
+              "type": "string",
+              "value": "Гавриловец"
+            },
+            {
+              "id": "c7125edf-624b-4f8f-ad10-4a8c033dbee7",
+              "name": "group",
+              "type": "string",
+              "value": "СДП-ИИ-241"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "53284035-4317-4d75-ab9b-859df5a397f1",
+      "name": "Тема, время и данные",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        245,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "id": "0fcbcb39-7e62-43fb-ac7d-65cb268e027a",
+      "name": "Вернуть сообщение целиком",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        490,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Тема, время и данные",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Тема, время и данные": {
+      "main": [
+        [
+          {
+            "node": "Вернуть сообщение целиком",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk"
+  },
+  "id": "c79bacd205c5d1c1",
+  "versionId": "86785411-765d-4755-9149-46a9230250ae",
+  "tags": []
+}

@@ -1,0 +1,135 @@
+{
+  "name": "03-if · Ветвление по payload · Гавриловец · СДП-ИИ-241",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "d4c9eea1-32d6-4259-aec0-33b145fde04b",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function summarize(values) {\n  const numbers = [];\n  let total = 0;\n  for (const value of values) {\n    if (value >= 0) {\n      numbers.push(value);\n      total += value;\n    } else {\n      numbers.push(0);\n    }\n  }\n  return { payload: total, numbers, student: \"Гавриловец\", group: \"СДП-ИИ-241\" };\n}\n\nreturn [[3, -2, 4, 5], [1, -2, 2]].map(values => ({ json: summarize(values) }));"
+      },
+      "id": "2861164f-3d5b-4c82-a056-a203664b015d",
+      "name": "Посчитать контрольные суммы",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        245,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "e1155a6a-5e71-4a04-a0ed-8a6eb5acfaef",
+              "leftValue": "={{ $json.payload }}",
+              "rightValue": 10,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "acc9a6e8-e253-4e61-a48d-6348b76cd3c3",
+      "name": "Проверить порог",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        490,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "33d7df8b-4941-4216-adb7-1308d4bd8bde",
+      "name": "Порог достигнут",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        735,
+        -120
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "fd00464c-edd3-4764-afb7-c506df899693",
+      "name": "Ниже порога",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        735,
+        120
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Посчитать контрольные суммы",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Посчитать контрольные суммы": {
+      "main": [
+        [
+          {
+            "node": "Проверить порог",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Проверить порог": {
+      "main": [
+        [
+          {
+            "node": "Порог достигнут",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Ниже порога",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk"
+  },
+  "id": "cf09fcd6f67ae680",
+  "versionId": "f46ec5e3-fdf1-4259-a7a0-3dfc1d8a99d6",
+  "tags": []
+}
