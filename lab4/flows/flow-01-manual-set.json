@@ -1,0 +1,97 @@
+{
+  "name": "01-manual-set · Отладка входа · Гавриловец · СДП-ИИ-241",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "53c876df-87f8-4534-a0d3-79f696e5bbe8",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ca49ba8b-9130-4609-a51e-3be56079998d",
+              "name": "payload",
+              "type": "string",
+              "value": "Гавриловец"
+            },
+            {
+              "id": "d37100f6-b2de-4a10-ae5a-503434f0fd8d",
+              "name": "topic",
+              "type": "string",
+              "value": "lab4/gavrilovets/basic"
+            },
+            {
+              "id": "27a7571f-beda-496f-aecc-d120c13d64ae",
+              "name": "group",
+              "type": "string",
+              "value": "СДП-ИИ-241"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "c406cd0c-7d1c-4a98-a5c3-526d71304bfd",
+      "name": "Входные поля",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        245,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all();"
+      },
+      "id": "7b68263b-df0b-4794-a191-7aedcac2d692",
+      "name": "Вернуть входные данные",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        490,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Входные поля",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Входные поля": {
+      "main": [
+        [
+          {
+            "node": "Вернуть входные данные",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk"
+  },
+  "id": "9530914b5d35970e",
+  "versionId": "82a37ec0-4f2e-49ac-a97a-c4c87e348d6c",
+  "tags": []
+}

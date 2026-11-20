@@ -1,0 +1,73 @@
+{
+  "name": "02-code · Обработка массива · Гавриловец · СДП-ИИ-241",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "af8395ee-bae5-4471-a004-7d1182d98b4c",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "function summarize(values) {\n  const numbers = [];\n  let total = 0;\n  for (const value of values) {\n    if (value >= 0) {\n      numbers.push(value);\n      total += value;\n    } else {\n      numbers.push(0);\n    }\n  }\n  return { payload: total, numbers, student: \"Гавриловец\", group: \"СДП-ИИ-241\" };\n}\n\nreturn [{ json: summarize([3, -2, 4, 5]) }];"
+      },
+      "id": "e4fa3623-1535-471c-ad21-5cf46815dc9c",
+      "name": "Посчитать сумму",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        245,
+        0
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "a2da6c55-30e2-4dd4-a1f0-dcc02a7628ba",
+      "name": "Результат",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        490,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Посчитать сумму",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Посчитать сумму": {
+      "main": [
+        [
+          {
+            "node": "Результат",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk"
+  },
+  "id": "be69b7fee457e74d",
+  "versionId": "cb1680fd-9dbc-4959-b669-570e970a81bb",
+  "tags": []
+}
