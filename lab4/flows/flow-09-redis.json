@@ -1,0 +1,81 @@
+{
+  "name": "09-redis · Redis: запись и чтение · Гавриловец · СДП-ИИ-241",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "4598d143-1ed7-4eb1-ad96-c36d9eb1a96d",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "gavrilovets",
+        "value": "Запись Redis · Гавриловец · СДП-ИИ-241",
+        "keyType": "string"
+      },
+      "id": "dd6acbf0-d92a-40e5-a3a5-e1fb02cd2d2f",
+      "name": "SET — создать ключ",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        245,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "gavrilovets",
+        "propertyName": "value",
+        "keyType": "string"
+      },
+      "id": "409e1154-2e1d-4164-a39e-db465ac7f298",
+      "name": "GET — прочитать значение",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        490,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "SET — создать ключ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SET — создать ключ": {
+      "main": [
+        [
+          {
+            "node": "GET — прочитать значение",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk"
+  },
+  "id": "6b87c9b6772986b8",
+  "versionId": "afafc2b1-ecfb-42d9-9aa6-4c141a17c222",
+  "tags": []
+}

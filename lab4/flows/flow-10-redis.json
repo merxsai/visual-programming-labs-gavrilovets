@@ -1,0 +1,103 @@
+{
+  "name": "10-redis · Redis: удаление и проверка · Гавриловец · СДП-ИИ-241",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "dc7bfe1a-ecca-4dce-ac72-ba9273845922",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "gavrilovets"
+      },
+      "id": "2a152d8e-bf36-4fdb-a812-54f471d5f8eb",
+      "name": "DEL — удалить ключ",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        245,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "key": "gavrilovets",
+        "propertyName": "value",
+        "keyType": "string"
+      },
+      "id": "be54d57d-f362-4788-a3f5-7a6236e389a3",
+      "name": "GET — проверить отсутствие",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        490,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const { value } = $input.first().json;\nreturn [{ json: { key: 'gavrilovets', value, exists: value !== null, student: \"Гавриловец\", group: \"СДП-ИИ-241\" } }];"
+      },
+      "id": "06279159-813f-49f7-a16d-2992dc9e9315",
+      "name": "Результат проверки",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        735,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "DEL — удалить ключ",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DEL — удалить ключ": {
+      "main": [
+        [
+          {
+            "node": "GET — проверить отсутствие",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GET — проверить отсутствие": {
+      "main": [
+        [
+          {
+            "node": "Результат проверки",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk"
+  },
+  "id": "8568ab1cd6604083",
+  "versionId": "18e5a483-c566-4473-aac8-36133f166b07",
+  "tags": []
+}
