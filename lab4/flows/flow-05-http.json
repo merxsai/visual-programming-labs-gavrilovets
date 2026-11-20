@@ -1,0 +1,84 @@
+{
+  "name": "05-http · Публичный JSON API · Гавриловец · СДП-ИИ-241",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "1417dfda-fb8a-4fbd-a79f-e2f75d8c255e",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://catfact.ninja/fact",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 15000
+        }
+      },
+      "id": "da921fd8-625a-46c6-a5a5-63c218ac5f1e",
+      "name": "Получить факт о кошках",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        245,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return $input.all().map(({ json }) => {\n  if (typeof json.fact !== 'string' || !json.fact.trim()) {\n    throw new Error('API не вернул текст факта');\n  }\n  return { json: { payload: json.fact, length: json.length, student: \"Гавриловец\", group: \"СДП-ИИ-241\" } };\n});"
+      },
+      "id": "470c8d5a-bceb-4c45-a0d7-4e05832998bc",
+      "name": "Нормализовать JSON",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        490,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Получить факт о кошках",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Получить факт о кошках": {
+      "main": [
+        [
+          {
+            "node": "Нормализовать JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk"
+  },
+  "id": "25a46dd99ca6641a",
+  "versionId": "6151b20a-251f-4b83-a2b1-4578d3f866c0",
+  "tags": []
+}

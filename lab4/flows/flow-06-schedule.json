@@ -1,0 +1,60 @@
+{
+  "name": "06-schedule · Расписание каждые 5 минут · Гавриловец · СДП-ИИ-241",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 5
+            }
+          ]
+        }
+      },
+      "id": "eaac4180-c08c-4118-ac41-15e265b8d407",
+      "name": "Каждые 5 минут",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { payload: $now.toISO(), topic: 'lab4/gavrilovets/ai-241/schedule', student: \"Гавриловец\", group: \"СДП-ИИ-241\" } }];"
+      },
+      "id": "d76415ad-8cb3-4182-a9bf-0d43e65f755a",
+      "name": "Вернуть местное время",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        245,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Каждые 5 минут": {
+      "main": [
+        [
+          {
+            "node": "Вернуть местное время",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk"
+  },
+  "id": "415e48b5f770332f",
+  "versionId": "cfbd035e-574c-4071-926e-a22e9e91e68b",
+  "tags": []
+}
