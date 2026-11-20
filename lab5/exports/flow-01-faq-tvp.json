@@ -61,6 +61,11 @@
               "id": "cl96nvstv000e3b6itm8cj1s5",
               "outgoingEdgeId": "cl96ogaa0001x3b6izae2alxq",
               "content": "У меня другой вопрос"
+            },
+            {
+              "id": "a690fa1a00a17213ccdf8a44",
+              "content": "Узнать версию n8n",
+              "outgoingEdgeId": "7b7dd5d7b84ceb31dea8380d"
             }
           ]
         }
@@ -477,6 +482,159 @@
           }
         }
       ]
+    },
+    {
+      "id": "82628b23f3f252b3bc66e7bc",
+      "title": "Версия n8n из GitHub",
+      "graphCoordinates": {
+        "x": 1120,
+        "y": 730
+      },
+      "blocks": [
+        {
+          "id": "3da1fad9c598c3c44316879a",
+          "type": "Set variable",
+          "options": {
+            "variableId": "7ff3b97464331d43eb934ff0",
+            "type": "Custom",
+            "expressionToEvaluate": "недоступна"
+          }
+        },
+        {
+          "id": "7121b82024b1528f5e05bf5d",
+          "type": "Webhook",
+          "options": {
+            "webhook": {
+              "method": "GET",
+              "url": "https://api.github.com/repos/n8n-io/n8n/releases/latest",
+              "headers": [
+                {
+                  "id": "9b672e95136f89a0ed1fe248",
+                  "key": "Accept",
+                  "value": "application/vnd.github+json"
+                }
+              ]
+            },
+            "timeout": 8,
+            "responseVariableMapping": [
+              {
+                "id": "bef4d612e75a3251fdf16188",
+                "variableId": "7ff3b97464331d43eb934ff0",
+                "bodyPath": "data.tag_name"
+              }
+            ]
+          }
+        },
+        {
+          "id": "2279df75bd559a27b273a58a",
+          "type": "Condition",
+          "items": [
+            {
+              "id": "b5c4c7162375a92b386564ca",
+              "content": {
+                "comparisons": [
+                  {
+                    "id": "3124eefe9afa835a44b05801",
+                    "variableId": "7ff3b97464331d43eb934ff0",
+                    "comparisonOperator": "Starts with",
+                    "value": "n8n@"
+                  }
+                ]
+              },
+              "outgoingEdgeId": "f7e8c82769ed255d3df98695"
+            }
+          ],
+          "outgoingEdgeId": "621c536aceb002a530c453cd"
+        }
+      ]
+    },
+    {
+      "id": "c5aebafb914d1c110820e782",
+      "title": "Версия получена",
+      "graphCoordinates": {
+        "x": 1610,
+        "y": 670
+      },
+      "blocks": [
+        {
+          "id": "c16ab519acf48294e787468e",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Последний стабильный релиз на GitHub: {{Версия n8n}}."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "07b73c5cec0b12b350f2469c",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "2178b6f3fb92ad4fa13307b0",
+              "content": "Вернуться в меню"
+            }
+          ]
+        },
+        {
+          "id": "e1895c8092b785fd123914b4",
+          "type": "Jump",
+          "options": {
+            "groupId": "cl96ns9qr00043b6ii07bo25o",
+            "blockId": "cl96nv877000b3b6i7p69ss2o"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cc1c09d3047a66e242ae6d7f",
+      "title": "Версия недоступна",
+      "graphCoordinates": {
+        "x": 1610,
+        "y": 1040
+      },
+      "blocks": [
+        {
+          "id": "32304fa8b9b0a94a358a34a5",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "GitHub не вернул версию. Попробуйте позже или откройте раздел Releases в репозитории n8n-io/n8n."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "87b90268384252b8dbbfcef8",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "e94d61356a5b9c4303798659",
+              "content": "Вернуться в меню"
+            }
+          ]
+        },
+        {
+          "id": "a5ade1b006752fe16783175b",
+          "type": "Jump",
+          "options": {
+            "groupId": "cl96ns9qr00043b6ii07bo25o",
+            "blockId": "cl96nv877000b3b6i7p69ss2o"
+          }
+        }
+      ]
     }
   ],
   "edges": [
@@ -566,12 +724,46 @@
       "to": {
         "groupId": "pqldfrkh43ncm39lzyeartv3"
       }
+    },
+    {
+      "id": "7b7dd5d7b84ceb31dea8380d",
+      "from": {
+        "blockId": "cl96nv877000b3b6i7p69ss2o",
+        "itemId": "a690fa1a00a17213ccdf8a44"
+      },
+      "to": {
+        "groupId": "82628b23f3f252b3bc66e7bc"
+      }
+    },
+    {
+      "id": "f7e8c82769ed255d3df98695",
+      "from": {
+        "blockId": "2279df75bd559a27b273a58a",
+        "itemId": "b5c4c7162375a92b386564ca"
+      },
+      "to": {
+        "groupId": "c5aebafb914d1c110820e782"
+      }
+    },
+    {
+      "id": "621c536aceb002a530c453cd",
+      "from": {
+        "blockId": "2279df75bd559a27b273a58a"
+      },
+      "to": {
+        "groupId": "cc1c09d3047a66e242ae6d7f"
+      }
     }
   ],
   "variables": [
     {
       "id": "0c41e2534627e2db2d71019f",
       "name": "Вопрос",
+      "isSessionVariable": true
+    },
+    {
+      "id": "7ff3b97464331d43eb934ff0",
+      "name": "Версия n8n",
       "isSessionVariable": true
     }
   ],
