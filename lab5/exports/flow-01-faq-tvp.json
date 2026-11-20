@@ -767,7 +767,34 @@
       "isSessionVariable": true
     }
   ],
-  "theme": {},
+  "theme": {
+    "chat": {
+      "container": {
+        "backgroundColor": "#EEF5F3",
+        "maxWidth": "760px"
+      },
+      "hostBubbles": {
+        "backgroundColor": "#FFFFFF",
+        "color": "#132E30"
+      },
+      "guestBubbles": {
+        "backgroundColor": "#CFEAE3",
+        "color": "#153A3B"
+      },
+      "buttons": {
+        "backgroundColor": "#14645D",
+        "color": "#FFFFFF"
+      },
+      "inputs": {
+        "backgroundColor": "#FFFFFF",
+        "color": "#132E30",
+        "placeholderColor": "#526966"
+      },
+      "buttonsInput": {
+        "layout": "vertical"
+      }
+    }
+  },
   "selectedThemeTemplateId": null,
   "settings": {
     "metadata": {
